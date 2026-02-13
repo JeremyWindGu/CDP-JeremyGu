@@ -1,0 +1,193 @@
+/* === Variables === */
+:root {
+    --bg: #0d0d0d;
+    --bg-card: #1a1a1a;
+    --text: #f0f0f0;
+    --text-muted: #888;
+    --accent: #6b9bd1;
+    --accent-hover: #8ab4e8;
+    --border: rgba(255, 255, 255, 0.08);
+    --radius: 12px;
+    --font-sans: 'DM Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+    --font-mono: 'JetBrains Mono', monospace;
+}
+
+/* === Reset & Base === */
+*, *::before, *::after { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body {
+    margin: 0;
+    min-height: 100vh;
+    background: var(--bg);
+    color: var(--text);
+    font-family: var(--font-sans);
+    font-size: 16px;
+    line-height: 1.5;
+    -webkit-font-smoothing: antialiased;
+}
+
+#app {
+    min-height: 100vh;
+    position: relative;
+}
+
+/* === Panels === */
+.panel {
+    display: none;
+    min-height: 100vh;
+    padding: 2rem 1.5rem 3rem;
+}
+.panel.active {
+    display: block;
+    animation: fadeIn 0.35s ease;
+}
+@keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+
+/* === Panel Header === */
+.panel-header {
+    margin-bottom: 2rem;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    flex-wrap: wrap;
+}
+.panel-header h1, .panel-header h2 {
+    margin: 0;
+    font-weight: 600;
+    font-size: 1.5rem;
+    letter-spacing: -0.02em;
+}
+.panel-header .author {
+    font-size: 0.9rem;
+    color: var(--text-muted);
+}
+.subtitle {
+    width: 100%;
+    margin: 0.25rem 0 0;
+    font-size: 0.9rem;
+    color: var(--text-muted);
+}
+
+/* === Back Button === */
+.back-btn {
+    background: transparent;
+    border: 1px solid var(--border);
+    color: var(--text);
+    padding: 0.5rem 1rem;
+    border-radius: var(--radius);
+    font-family: var(--font-sans);
+    font-size: 0.875rem;
+    cursor: pointer;
+    transition: border-color 0.2s, color 0.2s;
+}
+.back-btn:hover {
+    border-color: var(--accent);
+    color: var(--accent);
+}
+
+/* === Catalog Grid (主目录) === */
+.catalog-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1.5rem;
+    justify-content: flex-start;
+    max-width: 1400px;
+}
+.cover-card {
+    flex: 0 0 auto;
+    width: min(280px, calc(50vw - 2rem));
+    cursor: pointer;
+    text-decoration: none;
+    color: inherit;
+    transition: transform 0.2s ease;
+}
+.cover-card:hover {
+    transform: translateY(-4px);
+}
+.cover-card .cover-image,
+.cover-card .cover-placeholder {
+    aspect-ratio: 4/3;
+    border-radius: var(--radius);
+    overflow: hidden;
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+}
+.cover-card .cover-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+.cover-placeholder {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.ellipsis {
+    font-size: 3rem;
+    color: var(--text-muted);
+    font-weight: 300;
+    line-height: 1;
+}
+.cover-card:hover .ellipsis {
+    color: var(--accent);
+}
+.cover-label {
+    display: block;
+    margin-top: 0.75rem;
+    font-size: 0.9rem;
+    color: var(--text-muted);
+}
+.cover-card:hover .cover-label {
+    color: var(--text);
+}
+.cover-type {
+    display: block;
+    font-size: 0.75rem;
+    color: var(--text-muted);
+}
+
+/* === Work Gallery (作品图片列表) === */
+.work-gallery {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    max-width: 900px;
+}
+.work-gallery .gallery-item {
+    width: 100%;
+    border-radius: var(--radius);
+    overflow: hidden;
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+}
+.work-gallery .gallery-item img {
+    width: 100%;
+    height: auto;
+    display: block;
+    vertical-align: middle;
+}
+
+/* === Responsive === */
+@media (min-width: 640px) {
+    .catalog-grid {
+        gap: 2rem;
+    }
+    .cover-card {
+        width: min(260px, calc(33.33% - 1.5rem));
+    }
+}
+@media (min-width: 900px) {
+    .panel {
+        padding: 3rem 3rem 4rem;
+    }
+    .catalog-grid {
+        gap: 2.5rem;
+    }
+    .cover-card {
+        width: 240px;
+    }
+    .work-gallery {
+        max-width: 1000px;
+    }
+}
