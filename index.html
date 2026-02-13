@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>作品集 | Portfolio</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div id="app">
+        <!-- 主面板：目录 -->
+        <main id="catalog-panel" class="panel active">
+            <header class="panel-header">
+                <h1>Portfolio</h1>
+                <span class="author">Jeremy Gu</span>
+                <p class="subtitle">Select a project</p>
+            </header>
+            <div class="catalog-grid">
+                <article class="cover-card" data-work="1">
+                    <div class="cover-image">
+                        <img src="images/1_0.jpg" alt="Work 1" onerror="this.src='images/1_0.png'; this.onerror=null;">
+                    </div>
+                    <span class="cover-label">isolation</span>
+                    <span class="cover-type">architecture</span>
+                </article>
+                <article class="cover-card" data-work="2">
+                    <div class="cover-image">
+                        <img src="images/2_0.jpg" alt="Work 2" onerror="this.src='images/2_0.png'; this.onerror=null;">
+                    </div>
+                    <span class="cover-label">deep facade</span>
+                    <span class="cover-type">architecture</span>
+                </article>
+                <article class="cover-card" data-work="3">
+                    <div class="cover-image">
+                        <img src="images/3_0.jpg" alt="Work 3" onerror="this.src='images/3_0.png'; this.onerror=null;">
+                    </div>
+                    <span class="cover-label">self-organizing</span>
+                    <span class="cover-type">architecture</span>
+                </article>
+                <article class="cover-card" data-work="4">
+                    <div class="cover-image">
+                        <img src="images/4_0.jpg" alt="Work 4" onerror="this.src='images/4_0.png'; this.onerror=null;">
+                    </div>
+                    <span class="cover-label">virtual transfer</span>
+                    <span class="cover-type">data-analysis &amp; visualization</span>
+                </article>
+                <article class="cover-card" data-work="5" data-link="https://jeremywindgu.github.io/Shanghai-Performances/">
+                    <div class="cover-image">
+                        <img src="images/5_0.jpg" alt="Shanghai Performances" onerror="this.src='images/5_0.png'; this.onerror=null;">
+                    </div>
+                    <span class="cover-label">Shanghai Performances</span>
+                    <span class="cover-type">data-analysis &amp; visualization</span>
+                </article>
+                <article class="cover-card" data-work="6" data-link="https://jeremywindgu.github.io/GIS-Cities-After-Dark/">
+                    <div class="cover-image">
+                        <img src="images/6_0.jpg" alt="Cities After Dark" onerror="this.src='images/6_0.png'; this.onerror=null;">
+                    </div>
+                    <span class="cover-label">Cities After Dark</span>
+                    <span class="cover-type">data-analysis &amp; visualization</span>
+                </article>
+                <article class="cover-card" data-work="7" data-link="https://jeremywindgu.github.io/DataVis-Allergy/">
+                    <div class="cover-image">
+                        <img src="images/7_0.jpg" alt="NYC Tree Allergy" onerror="this.src='images/7_0.png'; this.onerror=null;">
+                    </div>
+                    <span class="cover-label">NYC Tree Allergy</span>
+                    <span class="cover-type">data-analysis &amp; visualization</span>
+                </article>
+                <article class="cover-card cover-other" data-work="0">
+                    <div class="cover-placeholder">
+                        <span class="ellipsis">⋯</span>
+                    </div>
+                    <span class="cover-label">Other Works</span>
+                </article>
+            </div>
+        </main>
+
+        <!-- 作品面板 1 -->
+        <section id="work-panel-1" class="panel work-panel">
+            <header class="panel-header">
+                <button class="back-btn" aria-label="返回目录">← Back</button>
+                <h2>isolation</h2>
+            </header>
+            <div class="work-gallery" data-work="1"></div>
+        </section>
+
+        <!-- 作品面板 2 -->
+        <section id="work-panel-2" class="panel work-panel">
+            <header class="panel-header">
+                <button class="back-btn" aria-label="返回目录">← Back</button>
+                <h2>deep facade</h2>
+            </header>
+            <div class="work-gallery" data-work="2"></div>
+        </section>
+
+        <!-- 作品面板 3 -->
+        <section id="work-panel-3" class="panel work-panel">
+            <header class="panel-header">
+                <button class="back-btn" aria-label="返回目录">← Back</button>
+                <h2>self-organizing</h2>
+            </header>
+            <div class="work-gallery" data-work="3"></div>
+        </section>
+
+        <!-- 作品面板 4 -->
+        <section id="work-panel-4" class="panel work-panel">
+            <header class="panel-header">
+                <button class="back-btn" aria-label="返回目录">← Back</button>
+                <h2>virtual transfer</h2>
+            </header>
+            <div class="work-gallery" data-work="4"></div>
+        </section>
+
+        <!-- Other Works 面板 -->
+        <section id="work-panel-0" class="panel work-panel">
+            <header class="panel-header">
+                <button class="back-btn" aria-label="返回目录">← Back</button>
+                <h2>Other Works</h2>
+            </header>
+            <div class="work-gallery" data-work="0"></div>
+        </section>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
