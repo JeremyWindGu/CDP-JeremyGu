@@ -1,68 +1,60 @@
 /**
- * 电子作品集 - 导航与图片加载
+ * Portfolio navigation, bilingual toggle, image loading, and lightweight reveal effects
  */
 
 const WORK_CONFIG = {
-  1: { prefix: '1_', startIndex: 1 },                 // 作品1: 1_1, 1_2, 1_3...
-  2: { prefix: '2_', startIndex: 1 },                 // 作品2: 2_1, 2_2...
-  3: { prefix: '3_', startIndex: 1 },                 // 作品3: 3_1, 3_2...
-  4: { prefix: '4_', startIndex: 1, endIndex: 9 },    // 作品4: 4_1 - 4_9
-  0: { prefix: '0_', startIndex: 1 },                 // Other: 0_1, 0_2...
+  1: { prefix: '1_', startIndex: 1 },
+  2: { prefix: '2_', startIndex: 1 },
+  3: { prefix: '3_', startIndex: 1 },
+  4: { prefix: '4_', startIndex: 1, endIndex: 9 },
+  0: { prefix: '0_', startIndex: 1 },
 };
 
-const IMAGE_EXTENSIONS = ['jpg', 'jpeg', 'png', 'webp'];
+const LANG_STORAGE_KEY = 'portfolio-lang-mode';
 
-// 尝试加载图片，返回可用的扩展名或 null
-function findImagePath(baseName) {
-  for (const ext of IMAGE_EXTENSIONS) {
-    const path = `images/${baseName}.${ext}`;
-    // 预加载检测：创建 Image 对象
-    return path; // 实际由 HTML onerror 处理，这里统一返回 .jpg 路径
-  }
-  return `images/${baseName}.jpg`;
-}
-
-// 生成作品图片列表的 baseName
 function getImageBaseNames(workId) {
   const config = WORK_CONFIG[workId];
   if (!config) return [];
+
   const names = [];
   let i = config.startIndex;
   const endIndex = config.endIndex ?? 20;
+
   while (i <= endIndex) {
     names.push(`${config.prefix}${i}`);
-    i++;
+    i += 1;
   }
   return names;
 }
 
-// 渲染作品面板图片
 function renderWorkGallery(workId) {
   const gallery = document.querySelector(`.work-gallery[data-work="${workId}"]`);
   if (!gallery) return;
-  gallery.innerHTML = '';
 
+  gallery.innerHTML = '';
   const baseNames = getImageBaseNames(workId);
+
   baseNames.forEach((base) => {
     const item = document.createElement('div');
     item.className = 'gallery-item';
+
     const img = document.createElement('img');
     img.src = `images/${base}.jpg`;
     img.alt = `Work ${workId} - ${base}`;
     img.loading = 'lazy';
-    img.onerror = function () {
+    img.onerror = function onJpgError() {
       this.onerror = null;
       this.src = `images/${base}.png`;
-      this.onerror = function () {
+      this.onerror = function onPngError() {
         this.parentElement.style.display = 'none';
       };
     };
+
     item.appendChild(img);
     gallery.appendChild(item);
   });
 }
 
-// 预渲染所有作品面板（首次进入时按需渲染）
 function ensureWorkGalleryRendered(workId) {
   const gallery = document.querySelector(`.work-gallery[data-work="${workId}"]`);
   if (gallery && !gallery.hasChildNodes()) {
@@ -70,42 +62,140 @@ function ensureWorkGalleryRendered(workId) {
   }
 }
 
-// 切换面板
-function showPanel(panelId) {
-  document.querySelectorAll('.panel').forEach((p) => p.classList.remove('active'));
-  const panel = document.getElementById(panelId);
-  if (panel) {
-    panel.classList.add('active');
-    if (panel.classList.contains('work-panel')) {
-      const workId = panel.querySelector('.work-gallery')?.dataset?.work;
-      if (workId !== undefined) ensureWorkGalleryRendered(workId);
+function initRevealAnimations(scope = document) {
+  const reveals = Array.from(scope.querySelectorAll('.reveal'));
+  if (!reveals.length) return;
+
+  if (!('IntersectionObserver' in window)) {
+    reveals.forEach((el) => el.classList.add('visible'));
+    return;
+  }
+
+  const observer = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          observer.unobserve(entry.target);
+        }
+      });
+    },
+    {
+      threshold: 0.16,
+      rootMargin: '0px 0px -8% 0px',
     }
+  );
+
+  reveals.forEach((el) => {
+    if (el.classList.contains('visible')) return;
+    observer.observe(el);
+  });
+}
+
+function resetCaseStudyScroll(panel) {
+  if (!panel) return;
+
+  const scrollTarget = document.scrollingElement || document.documentElement;
+  scrollTarget.scrollTo({ top: 0, behavior: 'auto' });
+
+  panel.querySelectorAll('.reveal').forEach((el, index) => {
+    if (index === 0 && el.classList.contains('hero-section')) {
+      el.classList.add('visible');
+    } else {
+      el.classList.remove('visible');
+    }
+  });
+
+  initRevealAnimations(panel);
+}
+
+function showPanel(panelId) {
+  document.querySelectorAll('.panel').forEach((panel) => panel.classList.remove('active'));
+  const panel = document.getElementById(panelId);
+
+  if (!panel) return;
+
+  panel.classList.add('active');
+
+  if (panel.classList.contains('work-panel')) {
+    const workId = panel.querySelector('.work-gallery')?.dataset?.work;
+    if (workId !== undefined) ensureWorkGalleryRendered(workId);
+  }
+
+  if (panel.classList.contains('case-panel')) {
+    resetCaseStudyScroll(panel);
+  } else {
+    window.scrollTo({ top: 0, behavior: 'auto' });
   }
 }
 
-// 初始化
+function initVideoPlayback() {
+  document.querySelectorAll('video').forEach((video) => {
+    video.muted = true;
+    video.playsInline = true;
+    const playPromise = video.play();
+    if (playPromise && typeof playPromise.catch === 'function') {
+      playPromise.catch(() => {});
+    }
+  });
+}
+
+function applyLanguage(lang) {
+  const normalized = lang === 'zh' ? 'zh' : 'en';
+  document.documentElement.setAttribute('lang-mode', normalized);
+  document.documentElement.setAttribute('lang', normalized === 'zh' ? 'zh-CN' : 'en');
+  try {
+    localStorage.setItem(LANG_STORAGE_KEY, normalized);
+  } catch (error) {
+    // ignore storage errors
+  }
+}
+
+function getInitialLanguage() {
+  try {
+    const saved = localStorage.getItem(LANG_STORAGE_KEY);
+    if (saved === 'zh' || saved === 'en') return saved;
+  } catch (error) {
+    // ignore storage errors
+  }
+  return 'zh';
+}
+
+function toggleLanguage() {
+  const current = document.documentElement.getAttribute('lang-mode') === 'en' ? 'en' : 'zh';
+  applyLanguage(current === 'zh' ? 'en' : 'zh');
+}
+
+function initLanguageToggle() {
+  applyLanguage(getInitialLanguage());
+  document.querySelectorAll('.lang-toggle').forEach((button) => {
+    button.addEventListener('click', toggleLanguage);
+  });
+}
+
 function init() {
-  // 封面点击 -> 进入作品面板
   document.querySelectorAll('.cover-card').forEach((card) => {
-    card.addEventListener('click', (e) => {
-      e.preventDefault();
+    card.addEventListener('click', (event) => {
+      event.preventDefault();
       const link = card.dataset.link;
       if (link) {
         window.open(link, '_blank');
         return;
       }
       const workId = card.dataset.work;
-      const panelId = `work-panel-${workId}`;
-      showPanel(panelId);
+      showPanel(`work-panel-${workId}`);
     });
   });
 
-  // 返回按钮 -> 回到主目录
   document.querySelectorAll('.back-btn').forEach((btn) => {
     btn.addEventListener('click', () => {
       showPanel('catalog-panel');
     });
   });
+
+  initLanguageToggle();
+  initRevealAnimations(document);
+  initVideoPlayback();
 }
 
 document.addEventListener('DOMContentLoaded', init);

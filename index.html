@@ -7,117 +7,448 @@
     <link rel="stylesheet" href="style.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
 </head>
 <body>
     <div id="app">
-        <!-- 主面板：目录 -->
         <main id="catalog-panel" class="panel active">
-            <header class="panel-header">
-                <h1>Portfolio</h1>
-                <span class="author">Jeremy Gu</span>
-                <p class="subtitle">Select a project</p>
+            <header class="panel-header panel-header-with-toggle">
+                <div class="panel-title-group">
+                    <h1><span data-lang="zh">作品集</span><span data-lang="en">Portfolio</span></h1>
+                    <span class="author">Jeremy Gu</span>
+                    <p class="subtitle"><span data-lang="zh">选择一个项目</span><span data-lang="en">Select a project</span></p>
+                </div>
+                <button class="lang-toggle" type="button" aria-label="切换语言 / Switch language">
+                    <span class="lang-toggle-zh">中</span>
+                    <span class="lang-divider">/</span>
+                    <span class="lang-toggle-en">EN</span>
+                </button>
             </header>
+
             <div class="catalog-grid">
                 <article class="cover-card" data-work="1">
                     <div class="cover-image">
                         <img src="images/1_0.jpg" alt="Work 1" onerror="this.src='images/1_0.png'; this.onerror=null;">
                     </div>
                     <span class="cover-label">isolation</span>
-                    <span class="cover-type">architecture</span>
+                    <span class="cover-type"><span data-lang="zh">建筑</span><span data-lang="en">architecture</span></span>
                 </article>
+
                 <article class="cover-card" data-work="2">
                     <div class="cover-image">
                         <img src="images/2_0.jpg" alt="Work 2" onerror="this.src='images/2_0.png'; this.onerror=null;">
                     </div>
                     <span class="cover-label">deep facade</span>
-                    <span class="cover-type">architecture</span>
+                    <span class="cover-type"><span data-lang="zh">建筑</span><span data-lang="en">architecture</span></span>
                 </article>
+
                 <article class="cover-card" data-work="3">
                     <div class="cover-image">
                         <img src="images/3_0.jpg" alt="Work 3" onerror="this.src='images/3_0.png'; this.onerror=null;">
                     </div>
                     <span class="cover-label">self-organizing</span>
-                    <span class="cover-type">architecture</span>
+                    <span class="cover-type"><span data-lang="zh">建筑</span><span data-lang="en">architecture</span></span>
                 </article>
+
                 <article class="cover-card" data-work="4">
                     <div class="cover-image">
                         <img src="images/4_0.jpg" alt="Work 4" onerror="this.src='images/4_0.png'; this.onerror=null;">
                     </div>
                     <span class="cover-label">virtual transfer</span>
-                    <span class="cover-type">data-analysis &amp; visualization</span>
+                    <span class="cover-type"><span data-lang="zh">数据分析与可视化</span><span data-lang="en">data-analysis &amp; visualization</span></span>
                 </article>
+
                 <article class="cover-card" data-work="5" data-link="https://jeremywindgu.github.io/Shanghai-Performances/">
                     <div class="cover-image">
                         <img src="images/5_0.jpg" alt="Shanghai Performances" onerror="this.src='images/5_0.png'; this.onerror=null;">
                     </div>
                     <span class="cover-label">Shanghai Performances</span>
-                    <span class="cover-type">data-analysis &amp; visualization</span>
+                    <span class="cover-type"><span data-lang="zh">数据分析与可视化</span><span data-lang="en">data-analysis &amp; visualization</span></span>
                 </article>
+
                 <article class="cover-card" data-work="6" data-link="https://jeremywindgu.github.io/GIS-Cities-After-Dark/">
                     <div class="cover-image">
                         <img src="images/6_0.jpg" alt="Cities After Dark" onerror="this.src='images/6_0.png'; this.onerror=null;">
                     </div>
                     <span class="cover-label">Cities After Dark</span>
-                    <span class="cover-type">data-analysis &amp; visualization</span>
+                    <span class="cover-type"><span data-lang="zh">数据分析与可视化</span><span data-lang="en">data-analysis &amp; visualization</span></span>
                 </article>
+
                 <article class="cover-card" data-work="7" data-link="https://jeremywindgu.github.io/DataVis-Allergy/">
                     <div class="cover-image">
                         <img src="images/7_0.jpg" alt="NYC Tree Allergy" onerror="this.src='images/7_0.png'; this.onerror=null;">
                     </div>
                     <span class="cover-label">NYC Tree Allergy</span>
-                    <span class="cover-type">data-analysis &amp; visualization</span>
+                    <span class="cover-type"><span data-lang="zh">数据分析与可视化</span><span data-lang="en">data-analysis &amp; visualization</span></span>
                 </article>
+
+                <article class="cover-card" data-work="8">
+                    <div class="cover-image">
+                        <img src="images/8_0.jpg" alt="Mosquito Clap" onerror="this.src='images/8_0.png'; this.onerror=null;">
+                    </div>
+                    <span class="cover-label">Mosquito Clap</span>
+                    <span class="cover-type"><span data-lang="zh">交互</span><span data-lang="en">interaction</span></span>
+                </article>
+
                 <article class="cover-card cover-other" data-work="0">
                     <div class="cover-placeholder">
                         <span class="ellipsis">⋯</span>
                     </div>
-                    <span class="cover-label">Other Works</span>
+                    <span class="cover-label"><span data-lang="zh">其他作品</span><span data-lang="en">Other Works</span></span>
                 </article>
             </div>
         </main>
 
-        <!-- 作品面板 1 -->
         <section id="work-panel-1" class="panel work-panel">
-            <header class="panel-header">
-                <button class="back-btn" aria-label="返回目录">← Back</button>
-                <h2>isolation</h2>
+            <header class="panel-header panel-header-with-toggle">
+                <button class="back-btn" aria-label="返回目录">← <span data-lang="zh">返回</span><span data-lang="en">Back</span></button>
+                <div class="panel-title-group">
+                    <h2>isolation</h2>
+                </div>
+                <button class="lang-toggle" type="button" aria-label="切换语言 / Switch language">
+                    <span class="lang-toggle-zh">中</span>
+                    <span class="lang-divider">/</span>
+                    <span class="lang-toggle-en">EN</span>
+                </button>
             </header>
             <div class="work-gallery" data-work="1"></div>
         </section>
 
-        <!-- 作品面板 2 -->
         <section id="work-panel-2" class="panel work-panel">
-            <header class="panel-header">
-                <button class="back-btn" aria-label="返回目录">← Back</button>
-                <h2>deep facade</h2>
+            <header class="panel-header panel-header-with-toggle">
+                <button class="back-btn" aria-label="返回目录">← <span data-lang="zh">返回</span><span data-lang="en">Back</span></button>
+                <div class="panel-title-group">
+                    <h2>deep facade</h2>
+                </div>
+                <button class="lang-toggle" type="button" aria-label="切换语言 / Switch language">
+                    <span class="lang-toggle-zh">中</span>
+                    <span class="lang-divider">/</span>
+                    <span class="lang-toggle-en">EN</span>
+                </button>
             </header>
             <div class="work-gallery" data-work="2"></div>
         </section>
 
-        <!-- 作品面板 3 -->
         <section id="work-panel-3" class="panel work-panel">
-            <header class="panel-header">
-                <button class="back-btn" aria-label="返回目录">← Back</button>
-                <h2>self-organizing</h2>
+            <header class="panel-header panel-header-with-toggle">
+                <button class="back-btn" aria-label="返回目录">← <span data-lang="zh">返回</span><span data-lang="en">Back</span></button>
+                <div class="panel-title-group">
+                    <h2>self-organizing</h2>
+                </div>
+                <button class="lang-toggle" type="button" aria-label="切换语言 / Switch language">
+                    <span class="lang-toggle-zh">中</span>
+                    <span class="lang-divider">/</span>
+                    <span class="lang-toggle-en">EN</span>
+                </button>
             </header>
             <div class="work-gallery" data-work="3"></div>
         </section>
 
-        <!-- 作品面板 4 -->
         <section id="work-panel-4" class="panel work-panel">
-            <header class="panel-header">
-                <button class="back-btn" aria-label="返回目录">← Back</button>
-                <h2>virtual transfer</h2>
+            <header class="panel-header panel-header-with-toggle">
+                <button class="back-btn" aria-label="返回目录">← <span data-lang="zh">返回</span><span data-lang="en">Back</span></button>
+                <div class="panel-title-group">
+                    <h2>virtual transfer</h2>
+                </div>
+                <button class="lang-toggle" type="button" aria-label="切换语言 / Switch language">
+                    <span class="lang-toggle-zh">中</span>
+                    <span class="lang-divider">/</span>
+                    <span class="lang-toggle-en">EN</span>
+                </button>
             </header>
             <div class="work-gallery" data-work="4"></div>
         </section>
 
-        <!-- Other Works 面板 -->
+        <section id="work-panel-8" class="panel work-panel case-panel">
+            <header class="panel-header panel-header-sticky panel-header-with-toggle">
+                <button class="back-btn" aria-label="返回目录">← <span data-lang="zh">返回</span><span data-lang="en">Back</span></button>
+                <div class="panel-title-group">
+                    <h2>Mosquito Clap</h2>
+                    <p class="subtitle">
+                        <span data-lang="zh">交互 / 手势输入 / 测试 / 迭代</span>
+                        <span data-lang="en">Interaction / Gesture Input / Playtesting / Iteration</span>
+                    </p>
+                </div>
+                <button class="lang-toggle" type="button" aria-label="切换语言 / Switch language">
+                    <span class="lang-toggle-zh">中</span>
+                    <span class="lang-divider">/</span>
+                    <span class="lang-toggle-en">EN</span>
+                </button>
+            </header>
+
+            <article class="case-study">
+                <section class="case-section hero-section reveal visible">
+                    <div class="hero-copy">
+                        <p class="section-eyebrow"><span data-lang="zh">交互项目</span><span data-lang="en">Interactive Project</span></p>
+                        <h1>Mosquito Clap</h1>
+                        <p class="hero-lead">
+                            <span data-lang="zh">一个基于投影与手部交互的游戏原型，使用 Procession 与 p5.js 搭建。</span>
+                            <span data-lang="en">A projection-based hand interaction game prototype built with Procession and p5.js.</span>
+                        </p>
+                        <p class="hero-meta">
+                            <span data-lang="zh">交互设计 / 游戏原型 / 手势输入 / 双人协作 / 3周</span>
+                            <span data-lang="en">Interaction Design / Game Prototype / Gesture Input / Co-op Play / 3 Weeks</span>
+                        </p>
+                        <div class="tag-row">
+                            <span class="tag"><span data-lang="zh">手部追踪</span><span data-lang="en">Hand Tracking</span></span>
+                            <span class="tag"><span data-lang="zh">可用性测试</span><span data-lang="en">Playtesting</span></span>
+                            <span class="tag"><span data-lang="zh">交互迭代</span><span data-lang="en">Interaction Iteration</span></span>
+                        </div>
+                    </div>
+                    <div class="hero-media media-frame">
+                        <img src="images/8_0.jpg" alt="Mosquito Clap hero image" onerror="this.src='images/8_0.png'; this.onerror=null;">
+                    </div>
+                </section>
+
+                <section class="case-section reveal">
+                    <div class="section-heading split-heading">
+                        <div>
+                            <p class="section-eyebrow"><span data-lang="zh">项目概览</span><span data-lang="en">Overview</span></p>
+                            <h3><span data-lang="zh">项目摘要</span><span data-lang="en">Project Snapshot</span></h3>
+                        </div>
+                        <p class="section-intro">
+                            <span data-lang="zh">用一个简洁的信息区快速说明项目是什么、如何实现，以及它试图解决的交互问题。</span>
+                            <span data-lang="en">A compact summary for quick scanning: what the project is, how it was built, and what design problem it set out to solve.</span>
+                        </p>
+                    </div>
+
+                    <div class="overview-grid">
+                        <article class="info-card">
+                            <span class="info-label"><span data-lang="zh">项目类型</span><span data-lang="en">Project Type</span></span>
+                            <p><span data-lang="zh">基于投影的交互游戏</span><span data-lang="en">Projection-based interactive game</span></p>
+                        </article>
+                        <article class="info-card">
+                            <span class="info-label"><span data-lang="zh">平台</span><span data-lang="en">Platform</span></span>
+                            <p>Procession + p5.js</p>
+                        </article>
+                        <article class="info-card">
+                            <span class="info-label"><span data-lang="zh">团队</span><span data-lang="en">Team</span></span>
+                            <p><span data-lang="zh">2位协作者</span><span data-lang="en">2 collaborators</span></p>
+                        </article>
+                        <article class="info-card">
+                            <span class="info-label"><span data-lang="zh">周期</span><span data-lang="en">Duration</span></span>
+                            <p><span data-lang="zh">3周</span><span data-lang="en">3 weeks</span></p>
+                        </article>
+                        <article class="info-card">
+                            <span class="info-label"><span data-lang="zh">我的角色</span><span data-lang="en">My Role</span></span>
+                            <p><span data-lang="zh">交互概念、玩法迭代、测试观察、范围收敛</span><span data-lang="en">Interaction concept, gameplay iteration, testing observation, scope refinement</span></p>
+                        </article>
+                        <article class="info-card">
+                            <span class="info-label"><span data-lang="zh">目标</span><span data-lang="en">Goal</span></span>
+                            <p><span data-lang="zh">设计一种清晰、轻量、可读的“拍蚊子”交互。</span><span data-lang="en">Design a readable and lightweight mosquito-killing interaction.</span></p>
+                        </article>
+                    </div>
+                </section>
+
+                <section class="case-section two-column reveal">
+                    <div class="text-column">
+                        <p class="section-eyebrow"><span data-lang="zh">初始概念</span><span data-lang="en">Initial Idea</span></p>
+                        <h3><span data-lang="zh">从一次直接、强烈的击打开始</span><span data-lang="en">Start from a Direct and Expressive Hit</span></h3>
+                        <p><span data-lang="zh">第一版概念把拍蚊子想象成一次垂直打向投影面的强力击打，反馈也被设计得很夸张：爆裂、屏幕震动，以及类似裂屏的视觉效果。</span><span data-lang="en">The first concept imagined mosquito killing as a strong vertical strike directly onto the projection surface. The feedback was intentionally dramatic: splatter, screen shake, and cracked-screen style effects.</span></p>
+                        <p><span data-lang="zh">这个版本在视觉气质上很明确，但也要求系统在实时环境中快速且稳定地识别一种非常特定的手势。</span><span data-lang="en">This version had a clear visual attitude, but it also asked the interaction system to recognize a very specific gesture quickly and reliably in real time.</span></p>
+                    </div>
+                    <div class="media-column media-frame media-frame-tall">
+                        <img src="images/8_3.jpg" alt="Early test or concept image for Mosquito Clap" onerror="this.src='images/8_3.png'; this.onerror=null;">
+                    </div>
+                </section>
+
+                <section class="case-section section-muted reveal">
+                    <div class="section-heading split-heading">
+                        <div>
+                            <p class="section-eyebrow"><span data-lang="zh">问题识别</span><span data-lang="en">Problem Recognition</span></p>
+                            <h3><span data-lang="zh">为什么第一版没有成立</span><span data-lang="en">Why the First Version Didn’t Hold Up</span></h3>
+                        </div>
+                        <p class="section-intro"><span data-lang="zh">核心问题并不在视觉想法本身，而在于表达性的概念与可读的交互状态之间并不匹配。</span><span data-lang="en">The core issue was not the visual idea itself, but the mismatch between expressive intent and readable interaction states.</span></p>
+                    </div>
+
+                    <div class="problem-layout">
+                        <div class="problem-grid">
+                            <article class="problem-card">
+                                <h4><span data-lang="zh">识别不稳定</span><span data-lang="en">Recognition instability</span></h4>
+                                <p><span data-lang="zh">深度通过手部关键点之间的距离来估算，但摄像头角度变化也会同时影响这些数值。</span><span data-lang="en">Depth was estimated through the distance between hand landmarks, but camera angle changes also affected those values.</span></p>
+                            </article>
+
+                            <article class="problem-card">
+                                <h4><span data-lang="zh">状态可读性差</span><span data-lang="en">Poor state readability</span></h4>
+                                <p><span data-lang="zh">用户很难明确判断自己的手是否已经进入可被识别的“击打”状态。</span><span data-lang="en">Users could not clearly tell whether their hands were in a valid “hit” state before performing the action.</span></p>
+                            </article>
+
+                            <article class="problem-card">
+                                <h4><span data-lang="zh">视觉代价过重</span><span data-lang="en">Heavy visual cost</span></h4>
+                                <p><span data-lang="zh">裂纹生成与屏幕震动提升了运算负担，也在游玩中引入了不必要的卡顿。</span><span data-lang="en">Crack generation and screen shake increased computational load and introduced unnecessary lag during play.</span></p>
+                            </article>
+
+                            <article class="problem-card">
+                                <h4><span data-lang="zh">概念很酷，但可用性偏弱</span><span data-lang="en">Cool idea, weak usability</span></h4>
+                                <p><span data-lang="zh">这个想法本身很有表现力，但交互闭环仍然过于模糊，难以支撑玩家稳定理解与操作。</span><span data-lang="en">The concept felt expressive, but the interaction loop was still too ambiguous to support confident play.</span></p>
+                            </article>
+                        </div>
+
+                        <div class="media-column media-frame diagram-frame">
+                            <img src="images/8_2.jpg" alt="Hand landmark reference" onerror="this.src='images/8_2.png'; this.onerror=null;">
+                            <p class="media-caption"><span data-lang="zh">原型依赖手部关键点逻辑，但状态识别对摄像头位置和角度过于敏感。</span><span data-lang="en">Hand landmark logic informed the prototype, but state recognition was too sensitive to camera position and angle.</span></p>
+                        </div>
+                    </div>
+                </section>
+
+                <section class="case-section reveal">
+                    <div class="section-heading split-heading">
+                        <div>
+                            <p class="section-eyebrow"><span data-lang="zh">交互重构</span><span data-lang="en">Interaction Redesign</span></p>
+                            <h3><span data-lang="zh">把“瞄准”和“击杀”分开</span><span data-lang="en">Separate Targeting from Killing</span></h3>
+                        </div>
+                        <p class="section-intro"><span data-lang="zh">重构后的方案不再依赖一次直接击打，而是改成一个两阶段的流程，让系统状态更可见，也让动作更容易理解。</span><span data-lang="en">The redesign shifted from a single direct strike to a two-step loop that made system status more visible and the action easier to understand.</span></p>
+                    </div>
+
+                    <div class="flow-strip reveal-seq">
+                        <div class="flow-step"><span>01</span><strong><span data-lang="zh">框选目标</span><span data-lang="en">Frame target</span></strong></div>
+                        <div class="flow-arrow"></div>
+                        <div class="flow-step"><span>02</span><strong><span data-lang="zh">锁定蚊子</span><span data-lang="en">Lock mosquitoes</span></strong></div>
+                        <div class="flow-arrow"></div>
+                        <div class="flow-step"><span>03</span><strong><span data-lang="zh">击掌</span><span data-lang="en">Clap</span></strong></div>
+                        <div class="flow-arrow"></div>
+                        <div class="flow-step"><span>04</span><strong><span data-lang="zh">确认击杀</span><span data-lang="en">Kill confirmed</span></strong></div>
+                    </div>
+
+                    <div class="two-column align-start">
+                        <div class="text-column">
+                            <p><span data-lang="zh">系统不再要求玩家立刻精准击中目标，而是先允许他们框选并锁定蚊子。只有在目标被清楚选中之后，击掌才成为一个有效且明确的输入。</span><span data-lang="en">Instead of asking players to strike the exact position immediately, the system first let them frame and lock the mosquitoes. Only after the target was clearly selected did the clap input become meaningful.</span></p>
+                            <ul class="bullet-list">
+                                <li><span data-lang="zh">降低手势识别难度</span><span data-lang="en">Reduced gesture-recognition difficulty</span></li>
+                                <li><span data-lang="zh">让当前状态对玩家可见</span><span data-lang="en">Made the current state visible to the player</span></li>
+                                <li><span data-lang="zh">建立更清晰的准备—动作反馈闭环</span><span data-lang="en">Created a clearer feedback loop between preparation and action</span></li>
+                                <li><span data-lang="zh">提升整体交互的可读性</span><span data-lang="en">Improved the overall readability of the interaction</span></li>
+                            </ul>
+                        </div>
+                        <div class="media-column media-frame video-frame">
+                            <video autoplay muted loop playsinline preload="metadata" controls>
+                                <source src="images/8_4.mp4" type="video/mp4">
+                            </video>
+                        </div>
+                    </div>
+                </section>
+
+                <section class="case-section reveal">
+                    <div class="section-heading split-heading">
+                        <div>
+                            <p class="section-eyebrow"><span data-lang="zh">测试观察</span><span data-lang="en">Playtesting</span></p>
+                            <h3><span data-lang="zh">观察到的行为变成了设计证据</span><span data-lang="en">Observed Behavior Became Design Evidence</span></h3>
+                        </div>
+                        <p class="section-intro"><span data-lang="zh">测试不仅是验证这套交互是否可行，也暴露出一些意料之外的玩家行为，而这些行为反而让体验更具体、更可信。</span><span data-lang="en">Testing did not just validate the interaction. It revealed unexpected player behavior that made the game feel more physical and believable.</span></p>
+                    </div>
+
+                    <div class="two-column align-start playtest-layout">
+                        <div class="frame-sequence-grid">
+                            <div class="media-frame sequence-frame">
+                                <img src="images/8_3.jpg" alt="Playtesting frame 1" onerror="this.src='images/8_3.png'; this.onerror=null;">
+                            </div>
+                            <div class="media-frame sequence-frame">
+                                <img src="images/8_0.jpg" alt="Playtesting frame 2" onerror="this.src='images/8_0.png'; this.onerror=null;">
+                            </div>
+                            <div class="media-frame sequence-frame">
+                                <img src="images/8_2.jpg" alt="Playtesting frame 3" onerror="this.src='images/8_2.png'; this.onerror=null;">
+                            </div>
+                        </div>
+
+                        <div class="text-column">
+                            <div class="observation-block">
+                                <h4><span data-lang="zh">观察到的行为</span><span data-lang="en">Observed behavior</span></h4>
+                                <ul class="bullet-list">
+                                    <li><span data-lang="zh">锁定目标这一步整体较顺畅，也更容易理解。</span><span data-lang="en">Locking the target felt relatively smooth and understandable.</span></li>
+                                    <li><span data-lang="zh">击掌步骤对部分玩家来说仍需要调整与重复尝试。</span><span data-lang="en">The clap step still required adjustment and repetition for some players.</span></li>
+                                    <li><span data-lang="zh">玩家会自然地重复击掌、调整手部角度，甚至加入旋转或按压式动作。</span><span data-lang="en">Players naturally repeated the clap, changed hand angle, or added a twisting / pressing motion.</span></li>
+                                </ul>
+                            </div>
+
+                            <div class="observation-block takeaway-block">
+                                <h4><span data-lang="zh">设计结论</span><span data-lang="en">Design takeaway</span></h4>
+                                <p><span data-lang="zh">不完美的识别并没有完全破坏沉浸感。相反，在一些情况下，它反而生成了一种更可信的“把虫子彻底压死”的后续动作，使交互显得更有身体性。</span><span data-lang="en">Imperfect recognition did not fully break immersion. In several cases, it actually produced a believable “finish the bug” behavior, making the interaction feel more physical rather than less successful.</span></p>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <section class="case-section reveal">
+                    <div class="section-heading split-heading">
+                        <div>
+                            <p class="section-eyebrow"><span data-lang="zh">内容扩展与收敛</span><span data-lang="en">Scope Decision</span></p>
+                            <h3><span data-lang="zh">谨慎扩展，再决定保留什么</span><span data-lang="en">Expand Carefully, Then Choose What to Keep</span></h3>
+                        </div>
+                        <p class="section-intro"><span data-lang="zh">最终方向来自对两种扩展思路的比较，并从中选择一个在短周期里更易理解、也更容易落地的方案。</span><span data-lang="en">The final direction came from comparing possible content expansions, then selecting the one that was more legible and achievable within a short development cycle.</span></p>
+                    </div>
+
+                    <div class="proposal-grid">
+                        <article class="proposal-card">
+                            <span class="proposal-label">Proposal A</span>
+                            <h4><span data-lang="zh">基于光的诱捕机制</span><span data-lang="en">Light-based attraction trap</span></h4>
+                            <p><span data-lang="zh">引入光作为环境诱饵，使蚊子先聚集到被照亮的区域，再进入拍击流程。</span><span data-lang="en">Introduce light as an environmental lure so mosquitoes gather around illuminated regions before being targeted.</span></p>
+                        </article>
+
+                        <article class="proposal-card">
+                            <span class="proposal-label">Proposal B</span>
+                            <h4><span data-lang="zh">虫种与运动方式变化</span><span data-lang="en">Bug type and movement variation</span></h4>
+                            <p><span data-lang="zh">通过不同蚊虫行为与运动模式制造更清楚的变化，同时保持核心交互稳定。</span><span data-lang="en">Different mosquito behaviors and movement patterns create clearer variety while keeping the core interaction stable.</span></p>
+                        </article>
+                    </div>
+
+                    <div class="final-choice-card">
+                        <div>
+                            <span class="proposal-label"><span data-lang="zh">最终选择</span><span data-lang="en">Final Choice</span></span>
+                            <h4><span data-lang="zh">最终采用 Proposal B</span><span data-lang="en">Proposal B was selected</span></h4>
+                            <p><span data-lang="zh">它更直观、更容易理解，实现成本更低，也更适合短周期完成。同时，它能在保留系统稳定性的前提下，让体验层次更丰富。</span><span data-lang="en">It was more intuitive, easier to understand, lower in implementation cost, and better suited to a short production window. It also preserved system stability while still making the experience richer.</span></p>
+                        </div>
+                        <div class="media-frame video-frame compact-video">
+                            <video autoplay muted loop playsinline preload="metadata" controls>
+                                <source src="images/8_1.mp4" type="video/mp4">
+                            </video>
+                        </div>
+                    </div>
+                </section>
+
+                <section class="case-section reveal final-reflection">
+                    <div class="section-heading split-heading">
+                        <div>
+                            <p class="section-eyebrow"><span data-lang="zh">总结</span><span data-lang="en">Reflection</span></p>
+                            <h3><span data-lang="zh">这个项目最终澄清了什么</span><span data-lang="en">What the Project Clarified</span></h3>
+                        </div>
+                    </div>
+
+                    <div class="reflection-grid">
+                        <article class="reflection-card">
+                            <h4><span data-lang="zh">我学到的内容</span><span data-lang="en">What I learned</span></h4>
+                            <ul class="bullet-list">
+                                <li><span data-lang="zh">比起富有表现力但模糊的输入，清晰的交互状态更重要。</span><span data-lang="en">Clear interaction states matter more than expressive but ambiguous input.</span></li>
+                                <li><span data-lang="zh">测试能暴露出值得被保留的、出乎意料的玩家行为。</span><span data-lang="en">Playtesting can reveal unexpected player behaviors worth preserving.</span></li>
+                                <li><span data-lang="zh">更强的体验有时来自对系统复杂度的主动削减。</span><span data-lang="en">Stronger experiences can come from reducing system complexity.</span></li>
+                                <li><span data-lang="zh">轻量化实现通常也会提升性能与可读性。</span><span data-lang="en">Lightweight implementation improves both performance and readability.</span></li>
+                            </ul>
+                        </article>
+
+                        <article class="reflection-card">
+                            <h4><span data-lang="zh">这个项目体现了什么</span><span data-lang="en">What this project demonstrates</span></h4>
+                            <ul class="bullet-list">
+                                <li><span data-lang="zh">交互流程设计</span><span data-lang="en">Interaction flow design</span></li>
+                                <li><span data-lang="zh">基于手势的玩法思考</span><span data-lang="en">Gesture-based gameplay thinking</span></li>
+                                <li><span data-lang="zh">通过测试推动迭代</span><span data-lang="en">Iteration through testing</span></li>
+                                <li><span data-lang="zh">技术约束下的范围控制</span><span data-lang="en">Scope control under technical constraints</span></li>
+                            </ul>
+                        </article>
+                    </div>
+                </section>
+            </article>
+        </section>
+
         <section id="work-panel-0" class="panel work-panel">
-            <header class="panel-header">
-                <button class="back-btn" aria-label="返回目录">← Back</button>
-                <h2>Other Works</h2>
+            <header class="panel-header panel-header-with-toggle">
+                <button class="back-btn" aria-label="返回目录">← <span data-lang="zh">返回</span><span data-lang="en">Back</span></button>
+                <div class="panel-title-group">
+                    <h2><span data-lang="zh">其他作品</span><span data-lang="en">Other Works</span></h2>
+                </div>
+                <button class="lang-toggle" type="button" aria-label="切换语言 / Switch language">
+                    <span class="lang-toggle-zh">中</span>
+                    <span class="lang-divider">/</span>
+                    <span class="lang-toggle-en">EN</span>
+                </button>
             </header>
             <div class="work-gallery" data-work="0"></div>
         </section>
